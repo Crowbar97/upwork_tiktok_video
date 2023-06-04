@@ -1,5 +1,5 @@
 ### Overview
-This repo contains AI-powered *video cropping tool* that detects main person on the input video and make smart cropping by specified frame size so this person will always be inside this frame.
+This repo contains AI-powered *video cropping tool* that detects main person on the input video and makes smart cropping by specified frame size so this person will always be inside this frame.
 
 <img src="assets/test_video_debug.png" alt= "Debug mode" width="100%">
 
@@ -51,3 +51,6 @@ After running script with this flag we will get output video with color bboxes o
 - *blue* - detector didn't see main person for a long time, that's why we are using *default* ROI (that is in the middle of the video frame)
 
 The most common reason why this tool may have undesireble behaviour is because head detector may detect unwanted persons from the video frames. We can reduce amount of such false detections by adjusting `--head_score_threshold` and `--head_dim_threshold` flags in the `run.sh` script. With `--head_score_threshold` flag we can specify minimum score value of the detector (that is in range `[0.0, 1.0]`) for accepting detection (larger value leads to lower detection amount). With `--head_dim_threshold` flag we can specify minimum value (in pixels) of the width and height of the detected heads, this can help us to get rid from secondary person detections (larger value leads to lower detection amount). With debug visualization we can find *lowest* score for main person detection and *lowest* value of detection's width and height and use that as optimal parameter values.
+
+### References
+- Model was taken from [this](https://github.com/Varat7v2/Human-Head-Detection/tree/master) repo
